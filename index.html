@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#f4dbe4" name="theme-color"/>
+<title>SONYA — The Birthday Issue · Vol. 21</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Italiana&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root { --paper:#f6f0e9; --white:#fffdf9; --burgundy:#722b42; --berry:#983f58; --ink:#27201f; --muted:#82736f; --rose:#e8d7d3; --gold:#ad8b60; --line:#d8cac1; }
+    * {box-sizing:border-box} html {height:100%} body {margin:0;min-height:100%;background:#ded2ca;color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+    button {font:inherit;cursor:pointer} button:focus-visible,a:focus-visible {outline:2px solid var(--berry);outline-offset:4px} ::selection{background:#e5c6cc}
+    .app {min-height:100svh;display:flex;align-items:center;justify-content:center;padding:26px 18px;position:relative;overflow:hidden;background:radial-gradient(circle at 10% 5%,#f6e9e0,transparent 35%),radial-gradient(circle at 90% 95%,#d8b9bb,transparent 42%),#e5dcd4}
+    .app::before {content:"";position:fixed;inset:0;opacity:.14;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E")}
+    .magazine {width:min(100%,980px);min-height:min(680px,calc(100svh - 50px));background:var(--paper);box-shadow:0 22px 70px #47312d35,12px 12px 0 #f8f3ea88;position:relative;display:flex;flex-direction:column;border:1px solid #faf7f1;isolation:isolate}
+    .topbar {display:flex;justify-content:space-between;align-items:center;padding:19px 35px 14px;border-bottom:1px solid var(--line);gap:12px;z-index:2}
+    .masthead {font-family:'Italiana',serif;font-size:26px;letter-spacing:.13em;color:var(--burgundy)} .topmeta,.eyebrow,.footnote {font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+    .page {display:none;flex:1;animation:turnIn .5s cubic-bezier(.22,.67,.17,1) both;position:relative;overflow:hidden} .page.active{display:flex} @keyframes turnIn {from{opacity:0;transform:translateX(17px) scale(.987)}to{opacity:1;transform:none}}
+    .page-inner {width:100%;padding:44px 7% 40px}.spread {display:grid;grid-template-columns:1fr 1fr;min-height:500px}.spread > *:first-child {border-right:1px solid var(--line)}
+    .cover {display:grid;grid-template-columns:1.13fr .87fr;width:100%}.cover-left {display:flex;flex-direction:column;justify-content:space-between;padding:56px 8% 46px;z-index:1}.cover-right{position:relative;display:flex;justify-content:center;align-items:center;background:linear-gradient(150deg,#c69c9d 0%,#ead4cd 46%,#b78791 100%);overflow:hidden;min-height:490px}
+    .cover-right::before{content:"";position:absolute;width:330px;height:410px;border:1px solid #fff9;transform:rotate(-7deg)}.cover-right::after{content:"✳";position:absolute;color:#f8e4dd;font-size:290px;opacity:.35;transform:translate(100px,60px)}
+    .portrait-frame {width:73%;aspect-ratio:3/4.2;border:7px solid #f8eee7;box-shadow:0 20px 30px #5f36433b;transform:rotate(5deg);position:relative;background:#e8ccca;overflow:hidden;z-index:1}.portrait-frame img {width:100%;height:100%;object-fit:cover;object-position:center 57%}.photo-placeholder {height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#875969;font-size:12px;line-height:1.8;gap:9px;padding:15px}.photo-placeholder span {font-family:'Playfair Display',serif;font-style:italic;font-size:45px}
+    .display{font-family:'Italiana',serif;font-weight:400;line-height:.86;letter-spacing:-.028em;color:var(--burgundy)}.cover-name{font-size:clamp(82px,11vw,154px);margin:12px 0 18px}.headline{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(30px,4vw,51px);line-height:1.13;margin:13px 0}.italic{font-style:italic}.cover-caption {max-width:300px;color:#6f5756;font-size:13px;line-height:1.8}.rule{width:55px;height:1px;background:var(--gold);margin:24px 0}.cover-side-note{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:#fdf3ed;position:absolute;right:12px;bottom:20px;writing-mode:vertical-rl;z-index:2}
+    .section-label {color:var(--berry);font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:700}.section-title{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(39px,5vw,67px);color:var(--burgundy);line-height:1.08;margin:16px 0 18px}.lead{font-size:14px;line-height:1.95;max-width:420px;color:#655451}
+    .solid-button,.ghost-button{display:inline-flex;gap:13px;align-items:center;justify-content:center;padding:13px 20px;border:1px solid var(--burgundy);text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:700;transition:.25s}.solid-button{background:var(--burgundy);color:white}.solid-button:hover{background:#4f1e31;transform:translateY(-2px)}.ghost-button{color:var(--burgundy);background:transparent}.ghost-button:hover{background:#eadfda}
+    .facts-wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}.fact{background:var(--white);border:1px solid var(--line);min-height:117px;padding:17px;text-align:left;color:var(--ink);transition:.25s;position:relative}.fact:hover{transform:translateY(-3px);box-shadow:0 8px 14px #74554b19}.fact small{color:var(--berry);font-size:10px;letter-spacing:.13em;text-transform:uppercase}.fact strong{display:block;font-family:'Playfair Display',serif;font-size:19px;font-weight:400;margin-top:12px}.fact.revealed{background:#ead9d7}.fact.revealed strong{font-size:16px;line-height:1.5}
+    .quote-panel {background:#e9d8d2;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:45px 12%;position:relative}.giant-quote{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,49px);line-height:1.3;color:var(--burgundy);font-style:italic}.decorative-star{font-size:45px;color:var(--gold);margin-bottom:18px}
+    .archive {display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center}.archive-photo{background:#e7d4ce;aspect-ratio:4/4.3;display:grid;place-items:center;overflow:hidden;position:relative;border:10px solid var(--white);box-shadow:0 12px 35px #55423a20;transform:rotate(-2deg)}.archive-photo img{width:100%;height:100%;object-fit:cover;object-position:center 57%}.archive-photo .photo-placeholder{color:#865e66}.archive-navigation{display:flex;align-items:center;gap:8px;margin-top:24px}.archive-navigation button{width:37px;height:37px;border:1px solid var(--line);background:var(--white);color:var(--burgundy)}.archive-counter{font-size:11px;letter-spacing:.14em;margin:0 10px;color:var(--muted)}
+
+    .letter-page{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:34px 25px;text-align:center}.envelope{position:relative;width:min(320px,80vw);height:195px;border:0;background:#dbc0b8;box-shadow:0 15px 40px #593a3630;overflow:hidden;transition:.35s;display:grid;place-items:center}.envelope::before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,transparent 49.5%,#caa9a2 50%,transparent 50.6%),linear-gradient(30deg,transparent 49.5%,#caa9a2 50%,transparent 50.6%)}.envelope::after{content:"";position:absolute;top:0;left:0;right:0;height:100px;background:#e8cec6;clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 5px 4px #ae8c85)}.envelope:hover{transform:translateY(-4px)}.seal{z-index:2;border-radius:50%;width:48px;height:48px;display:grid;place-items:center;background:var(--burgundy);color:#f7ded9;font-family:'Playfair Display',serif;font-size:23px;box-shadow:0 3px 10px #5427343b}.letter-sheet{max-width:660px;width:100%;text-align:left;background:#fffdf9;padding:30px 36px;border:1px solid var(--line);box-shadow:0 14px 35px #50382e13;animation:turnIn .5s both}.letter-sheet h3{font-family:'Playfair Display',serif;font-weight:400;color:var(--burgundy);font-size:35px;margin:0 0 15px}.letter-sheet p{font-size:14px;line-height:1.9;color:#655451;white-space:pre-line}.letter-sheet .signature{font-family:'Playfair Display',serif;font-size:24px;color:var(--burgundy);font-style:italic}
+    .finale{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 22px;background:radial-gradient(circle at 50% 52%,#f3e4dd 0,#f6f0e9 60%)}.finale .display{font-size:clamp(65px,11vw,125px);margin:20px 0}.finale-sub{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--berry)}
+    .toolbar{z-index:2;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 35px}.nav-button{background:transparent;border:0;color:var(--burgundy);font-size:11px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;padding:8px 0}.nav-button:disabled{opacity:.25;cursor:default}.progress{display:flex;gap:7px;align-items:center}.progress button{width:7px;height:7px;background:#c7aaa4;border:0;border-radius:50%;padding:0;transition:.2s}.progress button.active{background:var(--burgundy);width:22px;border-radius:5px}.page-count{font-size:10px;color:var(--muted);letter-spacing:.16em}
+    @media(max-width:700px){.app{padding:0}.magazine{min-height:100svh;box-shadow:none;border:0}.topbar{padding:16px 20px 12px}.masthead{font-size:22px}.topmeta{font-size:8px}.page{min-height:0}.page-inner{padding:31px 7%}.cover{grid-template-columns:1fr}.cover-left{padding:25px 8% 28px;min-height:335px}.cover-name{font-size:clamp(79px,20vw,120px)}.cover-right{min-height:280px}.portrait-frame{width:39%;min-width:165px;aspect-ratio:3/3.7}.cover-right::before{width:220px;height:240px}.spread{grid-template-columns:1fr}.spread>*:first-child{border-right:0}.quote-panel{min-height:220px;padding:25px}.quote-panel .giant-quote{font-size:29px}.archive{grid-template-columns:1fr;gap:15px}.archive-photo{width:min(260px,75%);margin:auto;aspect-ratio:4/3.3}.section-title{font-size:43px}.toolbar{padding:12px 20px}.page-count{display:none}.facts-wrap{gap:9px}.fact{min-height:105px;padding:12px}.fact strong{font-size:17px}.letter-sheet{padding:23px}.finale .display{font-size:70px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+    #letter-area{width:100%;display:flex;flex-direction:column;align-items:center;gap:16px} .letter-sheet p{overflow-wrap:anywhere} .page.active{overflow:visible}
+    .story-page,.scandals-page{width:100%;min-height:500px}.story-reveal:not([hidden]){display:grid;grid-template-columns:minmax(110px,200px) 1fr;gap:30px;align-items:center;padding:16px;background:#eee0d8;animation:turnIn .6s both}.story-reveal img{width:100%;max-height:260px;object-fit:cover}.story-reveal .headline{font-size:clamp(20px,3vw,31px)}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:25px 0}.case-file{display:flex;align-items:flex-start;flex-direction:column;background:#efe1db;border:1px solid #d6bfb5;text-align:left;padding:22px;min-height:150px;gap:10px;color:var(--burgundy);cursor:pointer}.case-file span,.case-file em{font-size:10px;letter-spacing:.12em;font-style:normal}.case-file strong{font-family:'Playfair Display',serif;font-size:23px;font-weight:400}.case-file p{font-size:13px;line-height:1.7;color:#57443f}.case-file p:not([hidden]){display:block}.case-file:hover{border-color:var(--burgundy)}.then-now{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--line);margin-top:20px}.then-now>div{padding:20px 20px 15px 0}.then-now>div+div{border-left:1px solid var(--line);padding-left:20px}.then-now h3{font-family:'Playfair Display',serif;font-size:23px;color:var(--burgundy);font-weight:400;margin:9px 0}.then-now p{font-size:13px;line-height:1.7}.closing-quote{text-align:center;font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:var(--burgundy);padding-top:15px}
+    @media(max-width:700px){.story-reveal:not([hidden]){grid-template-columns:1fr}.story-reveal img{max-height:220px}.case-grid{grid-template-columns:1fr}.case-file{min-height:120px}.then-now{grid-template-columns:1fr}.then-now>div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}}
+  
+
+    /* PINK VOGUE · restrained editorial art direction */
+    :root{--paper:#fff8f5;--white:#fffcf9;--burgundy:#701b3b;--berry:#a83d62;--ink:#30232b;--muted:#826d75;--rose:#f5dbe3;--gold:#b58b65;--line:#e6cfd4}
+    body{background:#dcc4c9}
+    .app{background:radial-gradient(ellipse at 16% 9%,#f8e6e7,transparent 46%),radial-gradient(ellipse at 85% 95%,#dfb9c4,transparent 50%),#ead9dc}
+    .magazine{width:min(100%,1080px);min-height:min(735px,calc(100svh - 40px));background:#fff8f5;border:1px solid #fff7f6;box-shadow:0 32px 95px #5b243631,10px 10px 0 #fff7f066}
+    .topbar{background:#fffaf7;padding:21px 39px 18px;border-bottom:1px solid #dac3ca}
+    .masthead{font-family:'Italiana',serif;font-size:30px;color:#711b3c;letter-spacing:.19em}
+    .topmeta{color:#8e6875;letter-spacing:.25em}
+    .page-inner{padding:48px 7% 45px}
+    .cover{grid-template-columns:.91fr 1.09fr;min-height:550px}
+    .cover-left{background:linear-gradient(145deg,#fff9f5 0%,#fff5f5 100%);padding:53px 9% 45px;position:relative}
+    .cover-left::before{content:'THE BIRTHDAY EDITION';position:absolute;right:7%;top:27%;font-size:9px;font-weight:700;letter-spacing:.22em;color:#a66b7c;writing-mode:vertical-rl;opacity:.8}
+    .cover-right{background:#e9b8c7;min-height:530px;overflow:hidden;position:relative}
+    .cover-right::before{content:'';position:absolute;inset:19px;border:1px solid #fff4f3b8;width:auto;height:auto;transform:none;z-index:2;pointer-events:none}
+    .cover-right::after{content:'21';font-family:'Italiana',serif;font-size:180px;color:#fff8f5;opacity:.9;position:absolute;right:21px;bottom:8px;transform:none;line-height:1;z-index:2;pointer-events:none;text-shadow:0 3px 20px #70274240}
+    .portrait-frame{width:100%;height:100%;aspect-ratio:auto;transform:none;border:0;box-shadow:none;background:#d2a7b4;z-index:1}
+    .portrait-frame img{height:100%;width:100%;object-fit:cover;object-position:center 45%;filter:saturate(.87) contrast(1.04)}
+    .cover-side-note{right:auto;left:35px;bottom:26px;writing-mode:initial;color:#fff;letter-spacing:.21em;text-shadow:0 1px 7px #50152b8c}
+    .cover-name{font-size:clamp(92px,10vw,152px);margin:10px 0 18px;color:#751b40}
+    .display{color:#751b40}
+    .headline{color:#38262c}
+    .cover .headline{font-size:clamp(31px,3.5vw,45px);line-height:1.22}
+    .eyebrow,.section-label{color:#a0395d}
+    .section-label{display:inline-block;border-bottom:1px solid #c69aa7;padding-bottom:9px}
+    .section-title{color:#741d3e;font-size:clamp(43px,5.5vw,70px)}
+    .lead,.cover-caption{color:#6d535c}
+    .rule{height:2px;width:72px;background:#ae687d}
+    .solid-button{background:#791e41;border-color:#791e41;color:#fffaf8;box-shadow:none;padding:16px 24px}
+    .solid-button:hover{background:#a54061}
+    .ghost-button{background:transparent;border-color:#8e3856;color:#791e41}
+    .ghost-button:hover{background:#f8e4e8}
+    .spread{min-height:580px}
+    .quote-panel{background:linear-gradient(160deg,#f0cbd7 0%,#e6afc2 100%);border-left:1px solid #e6bcc7}
+    .quote-panel::before{content:'SONYA / 21';position:absolute;top:35px;right:32px;color:#7b2645;letter-spacing:.22em;font-weight:700;font-size:11px}
+    .giant-quote{color:#6c1b3a;font-size:clamp(32px,4vw,55px)}
+    .decorative-star{font-size:49px;color:#8f385b}
+    .facts-wrap{gap:13px}
+    .fact{background:#fffdfb;border:1px solid #e2c4ce;box-shadow:none;min-height:123px}
+    .fact:nth-child(2),.fact:nth-child(3){background:#fae8ed}
+    .fact:hover{border-color:#ad5573;box-shadow:0 9px 23px #87465a18}
+    .fact.revealed{background:#eebccc;border-color:#c27b92}
+    .archive{grid-template-columns:1.04fr .96fr;gap:48px;background:linear-gradient(110deg,#f7e6eb 0%,#fff9f6 63%);min-height:560px}
+    .archive-photo{width:100%;aspect-ratio:4/4.15;transform:rotate(-1.2deg);background:#efcfda;border:11px solid #fff;box-shadow:0 20px 42px #65243a24}
+    .archive-photo img{object-position:center 57%}
+    .archive-navigation button{width:42px;height:42px;border:1px solid #ba8297;background:#fffaf9;color:#7b2443;font-size:20px}
+    .archive-navigation button:hover{background:#f5dce4}
+    #archive-year{color:#9a5d71;letter-spacing:.2em}
+    .letter-page{background:radial-gradient(circle at 80% 15%,#efd1dc,transparent 42%),#fff7f4;padding:45px 25px}
+    .envelope{background:#e9becd;box-shadow:0 16px 35px #71334c38}
+    .envelope::before{background:linear-gradient(150deg,transparent 49.5%,#ca8fa7 50%,transparent 50.6%),linear-gradient(30deg,transparent 49.5%,#ca8fa7 50%,transparent 50.6%)}
+    .envelope::after{background:#f4d5e0}
+    .seal{background:#792140;color:#fffaf5}
+    .letter-sheet{background:#fffdfb;border:1px solid #e4bfca;box-shadow:0 16px 38px #72324b20;max-height:56vh;overflow:auto}
+    .finale{background:radial-gradient(circle at 50% 45%,#fff9f5 0%,#f4dbe4 77%,#eabfcc 100%);position:relative;overflow:hidden}
+    .finale::before,.finale::after{content:'✦';position:absolute;color:#a24b68;opacity:.35;font-size:48px}
+    .finale::before{top:14%;left:15%}.finale::after{right:15%;bottom:17%}
+    .finale-sub{color:#892d51}
+    .toolbar{background:#fffbf8;border-top:1px solid #e2c4cc;padding:17px 39px}
+    .nav-button{color:#7d284a}.progress button{background:#d8b2bf}.progress button.active{background:#832447}
+    @media(max-width:700px){
+      .app{padding:0}.magazine{min-height:100svh;box-shadow:none;border:0}
+      .topbar{padding:16px 20px 13px}.masthead{font-size:24px}.topmeta{font-size:7px;letter-spacing:.13em}
+      .cover{grid-template-columns:1fr;min-height:0}.cover-left{min-height:315px;padding:29px 8% 25px}.cover-left::before{display:none}
+      .cover-name{font-size:clamp(75px,21vw,110px)}.cover .headline{font-size:30px}
+      .cover-right{min-height:345px;height:45svh}.portrait-frame{width:100%;height:100%;min-width:0;aspect-ratio:auto}
+      .cover-right::before{inset:11px}.cover-right::after{font-size:116px;bottom:10px;right:15px}
+      .cover-side-note{bottom:18px;left:21px;font-size:8px}
+      .spread{grid-template-columns:1fr;min-height:0}.spread > *:first-child{border:0}
+      .quote-panel{min-height:240px}.quote-panel::before{top:20px;right:16px}
+      .page-inner{padding:32px 7%}.section-title{font-size:43px}
+      .archive{grid-template-columns:1fr;gap:26px}.archive-photo{width:min(400px,100%);aspect-ratio:4/3.9;margin:auto}
+      .letter-sheet{max-height:61vh;padding:25px 21px}.toolbar{padding:13px 20px}
+      .finale .display{font-size:clamp(62px,14vw,85px)}
+    }
+    @media(prefers-reduced-motion:reduce){.page,.letter-sheet{animation:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+<div aria-label="Интерактивный журнал на день рождения Сони" class="magazine">
+<header class="topbar"><span class="masthead">SONYA.</span><span class="topmeta">THE BIRTHDAY ISSUE  /  VOL. 21</span></header>
+<section aria-label="Обложка" class="page active" data-page="0">
+<div class="cover">
+<div class="cover-left"><div><div class="eyebrow">EXCLUSIVE · LIMITED EDITION</div><h1 class="display cover-name">SONYA</h1><div class="headline">Twenty-one<br/><span class="italic">looks good on you.</span></div><div class="rule"></div><p class="cover-caption">Главная героиня специального выпуска — 21 год, тысячи эмоций и бесконечное количество историй.</p></div><div><button class="solid-button" onclick="goTo(1)" type="button">OPEN THE ISSUE <span aria-hidden="true">↗</span></button><p class="footnote" style="margin-top:20px">SPECIAL EDITION · TWENTY ONE</p></div></div>
+<div class="cover-right"><div class="portrait-frame" id="cover-photo"><div class="photo-placeholder"><span>✦</span>Место для<br/>красивого фото Сони</div></div><span class="cover-side-note">THE GIRL OF THE YEAR · 2026</span></div>
+</div>
+</section>
+<section aria-label="The Icon" class="page" data-page="1">
+<div class="spread" style="width:100%"><div class="page-inner"><div class="section-label">01 / THE ICON</div><h2 class="section-title">A little<br/><i>legendary.</i></h2><p class="lead">21 год быть Соней — уже достижение. Но редакция решила копнуть глубже. Нажми на карточки, чтобы узнать подробности.</p><div class="facts-wrap" id="facts"></div></div><aside class="quote-panel"><div class="decorative-star">✳</div><div class="giant-quote">“She doesn't follow trends.<br/>She is the plot.”</div><p class="eyebrow" style="margin-top:28px">EDITOR'S PERSONAL OPINION</p></aside></div>
+</section>
+
+<section aria-label="The Archive" class="page" data-page="2"><div class="page-inner archive"><div class="archive-photo" id="archive-image"><div class="photo-placeholder"><span>✧</span>Здесь будет<br/>ваше фото</div></div><div><div class="section-label">02 / THE ARCHIVE</div><h2 class="section-title">Moments<br/><i>worth keeping.</i></h2><div class="eyebrow" id="archive-year"></div><h3 class="headline" id="archive-title" style="font-size:27px"></h3><p class="lead" id="archive-text"></p><div class="archive-navigation"><button aria-label="Предыдущее воспоминание" onclick="changeMemory(-1)">←</button><button aria-label="Следующее воспоминание" onclick="changeMemory(1)">→</button><span class="archive-counter" id="archive-counter"></span></div></div></div></section>
+<section aria-label="Письмо от редактора" class="page" data-page="3"><div class="letter-page" style="width:100%"><span class="section-label">03 / A LETTER FROM THE EDITOR</span><h2 class="section-title" style="text-align:center;margin:2px 0 10px">For your eyes <i>only.</i></h2><div id="letter-area"><button aria-label="Открыть письмо" class="envelope" onclick="openLetter()" type="button"><span class="seal">S</span></button><p class="footnote">Нажми на печать, чтобы открыть письмо</p></div></div></section>
+<section aria-label="Финал" class="page" data-page="4"><div class="finale" style="width:100%"><span class="section-label">THE END OF THIS ISSUE · NOT THE STORY</span><div class="display">To be<br/>continued...</div><p class="finale-sub">С 21-летием, Соня ♡</p><button class="ghost-button" onclick="goTo(0)" style="margin-top:22px">BACK TO THE COVER ↗</button><p class="footnote" style="margin-top:32px">MADE WITH LOVE · A PRIVATE COLLECTOR'S EDITION</p></div></section>
+<footer class="toolbar"><button class="nav-button" id="prev" onclick="goTo(pageIndex-1)" type="button">← PREV</button><nav aria-label="Страницы журнала" class="progress" id="progress"></nav><span class="page-count" id="page-count">01 / 05</span><button class="nav-button" id="next" onclick="goTo(pageIndex+1)" type="button">NEXT →</button></footer>
+</div>
+</main>
+<script>
+    // ✎ РЕДАКТИРУЙ ЗДЕСЬ: поменяй тексты и пути к фотографиям.
+    // Изображения положи в папку images рядом с index.html.
+    const CONTENT = {
+      coverImage: 'images/cover.jpg',
+      facts: [
+        {label:'THE SIGNATURE ENERGY', front:'Эмоции через край', back:'Если чувствовать — то на все 100. И скучно с Соней точно не бывает.'},
+        {label:'THE GOSSIP COLUMN', front:'Отдел новостей', back:'Это не сплетни, это обмен жизненно важной информацией.'},
+        {label:'THE COMEDY EDIT', front:'Главная по веселью', back:'Смех, безумные идеи и истории, которые вспоминаются годами.'},
+        {label:'THE BIG PLOT TWIST', front:'Невеста года', back:'21-летие, девичник, а впереди свадьба. Соня, когда ты всё успела?!'}
+      ],
+      memories: [
+        {year:'2019 · PHOTO 001', title:'Where it all began', text:'Наша самая первая совместная фотография. В 2019 году мы познакомились. Кто знал, что это окажется началом такой истории?', image:'images/first.jpg'},
+        {year:'THE BIRTHDAY EDIT', title:'День рождения и мы', text:'Дни рождения меняются, но нам всегда есть что вспомнить — и над чем посмеяться.', image:'images/birthday.jpg'},
+        {year:'THE FLOWER ISSUE', title:'Цветы и объятия', text:'Один из тех кадров, которые хочется оставить в альбоме навсегда.', image:'images/flowers.jpg'},
+        {year:'GIRLS JUST WANNA HAVE FUN', title:'Спортсменки. Красавицы. Легенды.', text:'Кто сказал, что спорт обязательно должен выглядеть серьёзно?', image:'images/funny.jpg'},
+        {year:'SUNLIT MEMORIES', title:'Солнечный день', text:'Случайное селфи, которое хранит целую маленькую историю.', image:'images/sun.jpg'},
+        {year:'GIRLS’ DAY OUT', title:'За чем-нибудь вкусным', text:'Зашли за едой, а заодно сделали ещё одно совместное фото на память.', image:'images/shopping.jpg'},
+        {year:'THE SOFT EDIT', title:'Вот так выглядит дружба', text:'Моменты, когда ничего не нужно объяснять.', image:'images/kiss.jpg'},
+        {year:'THE PHOTO BOOTH', title:'Просто мы', text:'Ещё одна маленькая глава нашего большого архива.', image:'images/selfie.jpg'},
+        {year:'ON THE ROAD', title:'Куда бы ни занесло', text:'Важны не только места, но и люди рядом.', image:'images/car.jpg'},
+        {year:'BACHELORETTE EDIT', title:'A Day to Remember', text:'Для меня было невероятно важно быть рядом с тобой на твоём девичнике. Видеть тебя счастливой и разделить этот особенный день — воспоминание, которое я буду беречь. Совсем скоро у тебя начинается новая глава, и я очень рада, что смогла быть рядом.', image:'images/balloons.jpg'},
+        {year:'THE ICON · SOLO', title:'Her moment', text:'Соня — настоящая главная героиня этого выпуска.', image:'images/white.jpg'},
+        {year:'MIDNIGHT EDITION', title:'After dark', text:'Праздничный архив тоже может выглядеть как fashion-съёмка.', image:'images/pool.jpg'}
+      ],
+      letter: "Котёночек мой, с днём рождения! 💗\n\nТебе уже 21, и мне даже немного не верится, как быстро летит время. Кажется, совсем недавно мы познакомились, а теперь я сижу и пишу тебе поздравление, понимая, сколько всего мы уже успели пережить вместе.\n\nЯ хочу, чтобы ты знала, какой замечательный ты человек. Ты невероятно красивая, добрая, искренняя, эмоциональная, иногда немножко драматичная, но именно за всё это я тебя и люблю. С тобой можно и посмеяться до слёз, и обсудить все новости мира.\n\nЯ безумно счастлива видеть тебя такой счастливой. Я помню, сколько всего нам пришлось пережить, сколько было разочарований, переживаний и историй, которые сейчас даже смешно вспоминать. И от этого ещё приятнее осознавать, что сейчас рядом с тобой человек, с которым ты готовишься начать совершенно новую главу своей жизни.\n\nРодная моя, я от всего сердца желаю тебе быть счастливой. Не только сегодня, не только в какие-то особенные моменты, а каждый день. Пусть у тебя всегда будет возможность заниматься тем, что ты любишь, пробовать новое, исполнять свои мечты и никогда не сомневаться в себе.\n\nНе трать своё время на людей и вещи, которые не делают тебя счастливой. Не бойся меняться, ошибаться, начинать сначала и выбирать себя. Это твоя жизнь, и я очень хочу, чтобы ты прожила её именно так, как мечтаешь.\n\nПусть твоя будущая семейная жизнь будет наполнена любовью, уважением, заботой и огромным количеством счастливых моментов. Ты действительно заслуживаешь всего самого прекрасного.\n\nИ знай, что сколько бы нам ни было лет, сколько бы всего ни менялось вокруг, я всегда буду рада нашим встречам, разговорам, сплетням и всем новым воспоминаниям, которые нам ещё предстоит создать.\n\nЯ очень тебя люблю и безумно рада, что когда-то, совершенно случайно, ты появилась в моей жизни.\n\nС днём рождения, моя прекрасная девочка. 💗",
+      signature: "С любовью, твоя Настя." 
+    };
+
+    let pageIndex=0, memoryIndex=0;
+    const pages=[...document.querySelectorAll('.page')];
+    const progress=document.getElementById('progress');
+    pages.forEach((_,i)=>{const dot=document.createElement('button');dot.type='button';dot.title=`Страница ${i+1}`;dot.setAttribute('aria-label',`Перейти на страницу ${i+1}`);dot.onclick=()=>goTo(i);progress.appendChild(dot)});
+    function goTo(index){if(index<0||index>=pages.length)return;pageIndex=index;pages.forEach((p,i)=>p.classList.toggle('active',i===index));document.querySelectorAll('#progress button').forEach((b,i)=>b.classList.toggle('active',i===index));document.getElementById('prev').disabled=index===0;document.getElementById('next').disabled=index===pages.length-1;document.getElementById('page-count').textContent=`${String(index+1).padStart(2,'0')} / ${String(pages.length).padStart(2,'0')}`;window.scrollTo({top:0,behavior:'instant'})}
+    function addImage(element,path,alt){if(!path)return;const img=document.createElement('img');img.src=path;img.alt=alt;img.onerror=()=>img.remove();element.replaceChildren(img)}
+    addImage(document.getElementById('cover-photo'),CONTENT.coverImage,'Соня — обложка журнала');
+    const facts=document.getElementById('facts');
+    CONTENT.facts.forEach((fact)=>{const btn=document.createElement('button');btn.type='button';btn.className='fact';let revealed=false;const label=document.createElement('small');label.textContent=fact.label;const title=document.createElement('strong');title.textContent=fact.front;btn.append(label,title);btn.onclick=()=>{revealed=!revealed;btn.classList.toggle('revealed',revealed);title.textContent=revealed?fact.back:fact.front};facts.appendChild(btn)});
+    function renderMemory(){const m=CONTENT.memories[memoryIndex];document.getElementById('archive-year').textContent=m.year;document.getElementById('archive-title').textContent=m.title;document.getElementById('archive-text').textContent=m.text;document.getElementById('archive-counter').textContent=`${String(memoryIndex+1).padStart(2,'0')} / ${String(CONTENT.memories.length).padStart(2,'0')}`;const el=document.getElementById('archive-image');el.innerHTML='<div class="photo-placeholder"><span>✧</span>Здесь будет<br>ваше фото</div>';addImage(el,m.image,'Воспоминание: '+m.title);if(m.image==='images/pool.jpg'){const img=el.querySelector('img');if(img)img.style.objectPosition='center 50%'}}
+    function changeMemory(direction){memoryIndex=(memoryIndex+direction+CONTENT.memories.length)%CONTENT.memories.length;renderMemory()}renderMemory();
+    function openLetter(){const root=document.getElementById('letter-area');const sheet=document.createElement('article');sheet.className='letter-sheet';const heading=document.createElement('h3');heading.textContent='For Sonya, with love ♡';const message=document.createElement('p');message.textContent=CONTENT.letter;const signature=document.createElement('p');signature.className='signature';signature.textContent=CONTENT.signature;sheet.append(heading,message,signature);root.replaceChildren(sheet)}
+    goTo(0);
+    document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight')goTo(pageIndex+1);if(e.key==='ArrowLeft')goTo(pageIndex-1)});
+  </script>
+</body>
+</html>
